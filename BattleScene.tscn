@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkvh2csalw3cp"]
+[gd_scene load_steps=10 format=3 uid="uid://dkvh2csalw3cp"]
 
 [ext_resource type="PackedScene" uid="uid://c8ryh8yj4qlmf" path="res://Character.tscn" id="1_3bfws"]
 [ext_resource type="Script" path="res://GameManager.gd" id="1_g4lub"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cvge3anorlxs5" path="res://Sprites/Reptile.png" id="4_ap4ct"]
 [ext_resource type="Resource" uid="uid://dal7ve2agkjyf" path="res://CombatActions/Heal.tres" id="4_dbpwv"]
 [ext_resource type="Resource" uid="uid://cvhjq1dhdec2u" path="res://CombatActions/Stomp.tres" id="5_74uyl"]
+[ext_resource type="Script" path="res://PlayerUI.gd" id="8_aegi8"]
+[ext_resource type="Script" path="res://CombatActionButton.gd" id="8_jldje"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_g4lub")
@@ -27,3 +29,33 @@ flip_visual = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -325.0
+offset_top = 114.0
+offset_right = -175.0
+offset_bottom = 215.0
+scale = Vector2(1.00649, 0.688133)
+script = ExtResource("8_aegi8")
+
+[node name="CombatAction" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Slash (5 DMG)
+"
+script = ExtResource("8_jldje")
+
+[node name="CombatAction2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Slash (5 DMG)
+"
+script = ExtResource("8_jldje")
+
+[node name="CombatAction3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Slash (5 DMG)
+"
+script = ExtResource("8_jldje")
+
+[connection signal="pressed" from="VBoxContainer/CombatAction" to="VBoxContainer/CombatAction" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/CombatAction2" to="VBoxContainer/CombatAction2" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/CombatAction3" to="VBoxContainer/CombatAction3" method="_on_pressed"]

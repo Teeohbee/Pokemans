@@ -47,3 +47,6 @@ func on_character_begin_turn(character):
 	
 func on_character_end_turn(character):
 	pass
+	
+func cast_combat_action(action):
+	pass
