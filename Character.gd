@@ -26,7 +26,7 @@ func _update_health_bar():
 	health_bar.value = current_hp
 	health_text.text = str(current_hp, " / ", max_hp)
 
-func _take_damage(damage):
+func take_damage(damage):
 	current_hp -= damage
 	_update_health_bar()
 	
@@ -34,7 +34,7 @@ func _take_damage(damage):
 		get_node("/root/BattleScene").character_died(self)
 		queue_free()
 
-func _heal(amount):
+func heal(amount):
 	current_hp += amount
 	
 	if current_hp > max_hp:
@@ -49,4 +49,9 @@ func on_character_end_turn(character):
 	pass
 	
 func cast_combat_action(action):
-	pass
+	if action.damage > 0:
+		opponent.take_damage(action.damage)
+	elif action.heal > 0:
+		heal(action.heal)
+	
+	get_node("/root/BattleScene").end_current_turn()
